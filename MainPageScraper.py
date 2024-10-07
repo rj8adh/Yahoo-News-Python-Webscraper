@@ -15,9 +15,10 @@ headlines = soup.find_all('p')
 for i in headlines:
     if "Most Read from Bloomberg" in str(i):
         splitted = str(i).split("Most Read from Bloomberg")
+        print("Splitted: \n", splitted[0])
         if "--" in splitted[0]:
             splittedier = splitted[0].split("--")
-            print(splittedier[-1])
+            print("Splittedier: \n", splittedier[-1])
         # print(splitted[0])
         else:
             continue
