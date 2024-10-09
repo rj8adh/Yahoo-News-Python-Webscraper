@@ -3,18 +3,29 @@ import requests
 
 # ToDo: implement ai and ask if title is enough info, if not, go to URL and look at the related stock and first paragraph
 
-url='https://finance.yahoo.com/quote/AAPL/'
+url='https://finance.yahoo.com/quote/'
+stocks = []
 
-soup = bs4.BeautifulSoup(requests.get(url).text)
+stock = input("What stocks do you want to webscrape?(type end to end) ")
+stocks.append(stock.upper())
 
-# print(soup)
+while stocks[-1].lower() != 'end':
+    stock = input("What stocks do you want to webscrape?(type end to quit) ")
+    stocks.append(stock.upper())
 
-anchor = soup.find_all('a', attrs={'class':'subtle-link fin-size-small thumb yf-1e4diqp'})
-
-for atrb in anchor:
-    print('Title: ', atrb['title'])
-    print('URL: ', atrb['href'])
-    print('-------------------')
-
-
-# print(anchor)
+for i in range(len(stocks) - 1):
+    print('*********************************************************\n', stocks[i], '\n*********************************************************')
+    soup = bs4.BeautifulSoup(requests.get(url + stocks[i] + '/').text, 'html.parser')
+    
+    # print(soup)
+    
+    anchor = soup.find_all('a', attrs={'class':'subtle-link fin-size-small thumb yf-1e4diqp'})
+    
+    for atrb in anchor:
+        print('Title: ', atrb['title'])
+        print('URL: ', atrb['href'])
+        if atrb != anchor[-1]:
+            print('-------------------')
+    
+    
+    # print(anchor)
