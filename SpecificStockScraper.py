@@ -14,7 +14,7 @@ while stocks[-1].lower() != 'end':
     stocks.append(stock.upper())
 
 for i in range(len(stocks) - 1):
-    print('*********************************************************\n' + stocks[i], '\n\n*********************************************************')
+    print('*********************************************************\n\n' + stocks[i], '\n\n*********************************************************')
     soup = bs4.BeautifulSoup(requests.get(url + stocks[i] + '/').text, 'html.parser')
     
     # print(soup)
