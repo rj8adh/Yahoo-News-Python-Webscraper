@@ -6,7 +6,7 @@ import requests
 url='https://finance.yahoo.com/quote/'
 stocks = []
 
-stock = input("What stocks do you want to webscrape?(type end to end) ")
+stock = input("What stocks do you want to webscrape?(type end to quit) ")
 stocks.append(stock.upper())
 
 while stocks[-1].lower() != 'end':
